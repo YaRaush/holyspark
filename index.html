@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HolySpark - магазин Minecraft сервера</title>
+  <meta name="description" content="Магазин донатов HolySpark Minecraft сервера.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .store-content { padding: 100px 0; background: rgba(6,16,29,.45); }
+    .store-layout { display:grid; grid-template-columns:1fr; gap:34px; max-width:1100px; margin:0 auto; }
+    .categories-title { color:var(--muted); font-size:10px; letter-spacing:.14em; text-transform:uppercase; margin-bottom:14px; }
+    .categories { display:grid; gap:5px; }
+    .category { color:var(--muted); background:transparent; border:0; border-left:2px solid transparent; padding:10px; text-align:left; cursor:pointer; font-size:12px; }
+    .category.active,.category:hover { color:var(--cyan); border-left-color:var(--cyan); background:rgba(77,225,255,.06); }
+    .catalog-head { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; margin-bottom:36px; text-align:center; }
+    .catalog-head h2 { margin-top:18px; font-size:clamp(52px,6vw,78px); }
+    .catalog-count { color:var(--muted); font-size:11px; }
+    .products { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; max-width:1040px; margin:0 auto; }
+    .product { min-height:300px; padding:22px; display:flex; flex-direction:column; justify-content:space-between; background:linear-gradient(145deg,rgba(22,44,67,.95),rgba(9,22,37,.98)); border:1px solid var(--line); }
+    .product.featured { border-color:rgba(74,211,255,.45); background:linear-gradient(145deg,#123452,#0b1d31 65%); }
+    .product-tag { color:var(--cyan); font-size:10px; letter-spacing:.14em; text-transform:uppercase; }
+    .product-icon { width:56px; height:56px; margin:21px 0; display:grid; place-items:center; color:var(--cyan); border:1px solid rgba(75,210,255,.38); transform:rotate(45deg); font:30px 'Barlow Condensed',sans-serif; }
+    .product-icon span { transform:rotate(-45deg); }
+    .product h3 { font-size:32px; }
+    .product-desc { color:var(--muted); font-size:12px; margin-top:8px; }
+    .product-bottom { display:flex; align-items:end; justify-content:space-between; gap:12px; margin-top:24px; }
+    .price { font:700 30px 'Barlow Condensed',sans-serif; }
+    .price small { color:var(--muted); font:11px 'Space Grotesk',sans-serif; }
+    .buy { color:#04111e; background:linear-gradient(135deg,#fff,#52ddff); border:0; padding:10px 13px; cursor:pointer; font-size:11px; font-weight:700; }
+    .toast { position:fixed; right:24px; bottom:24px; z-index:50; padding:15px 19px; color:#04111e; background:linear-gradient(135deg,#fff,var(--cyan)); font-size:12px; font-weight:700; box-shadow:var(--shadow); transform:translateY(100px); opacity:0; transition:.3s; }
+    .toast.show { transform:translateY(0); opacity:1; }
+    @media (max-width:850px) { .store-layout { grid-template-columns:1fr; } .categories { display:flex; flex-wrap:wrap; } .category { border-left:0; border-bottom:2px solid transparent; } .category.active,.category:hover { border-left-color:transparent; border-bottom-color:var(--cyan); } .products { grid-template-columns:1fr; } .catalog-head { align-items:start; } }
+  </style>
+</head>
+<body>
+  <header class="header"><div class="container nav"><a class="logo" href="#top"><span class="logo-icon"><img src="Ava.jpg" alt="Аватар HolySpark" onerror="this.style.display='none'">H</span><span>HOLY<span>SPARK</span></span></a><nav aria-label="Навигация"><a href="#store">Магазин</a><a href="#about">О сервере</a><a href="#how">Как купить</a></nav><div class="online"><span class="online-dot"></span> ONLINE</div></div></header>
+  <main id="top">
+    <section class="store-hero"><div class="container"><div class="label">HolySpark store / 01</div><h1>HOLY<br><span>SPARK</span></h1><p class="store-hero-copy">Выбирай привилегии, игровые наборы и редкие предметы для своего мира. Магазин HolySpark уже готов к новым товарам.</p><div class="mode-bar"><span class="mode-label">Режим</span><button class="mode active">Holy Survival</button></div><div class="feature-strip"><div class="feature-cell"><strong>Ежемесячный spark</strong><span>Новые бонусы для игры каждый месяц</span></div><div class="feature-cell"><strong>24/7</strong><span>Сервер онлайн</span></div><div class="feature-cell"><strong>Java</strong><span>Версия 1.20+</span></div><div class="feature-cell"><strong>1.2K</strong><span>Игроков в сети</span></div></div></div></section>
+    <section id="store" class="store-content"><div class="container store-layout"><div><div class="catalog-head"><div><div class="label">Store / 02</div><h2>Привилегии</h2></div><span class="catalog-count">Показано 6 товаров</span></div><div class="products">
+      <article class="product"><div><div class="product-tag">01 / Starter</div><div class="product-icon"><span>✦</span></div><h3>Воин</h3><div class="product-desc">Первый ранг для уверенного старта на сервере.</div></div><div class="product-bottom"><div class="price">50 <small>₽</small></div><button class="buy" data-name="Воин">Купить ↗</button></div></article>
+      <article class="product featured"><div><div class="product-tag">02 / Popular</div><div class="product-icon"><span>◆</span></div><h3>Титан</h3><div class="product-desc">Больше возможностей и заметный статус в игре.</div></div><div class="product-bottom"><div class="price">100 <small>₽</small></div><button class="buy" data-name="Титан">Купить ↗</button></div></article>
+      <article class="product"><div><div class="product-tag">03 / Premium</div><div class="product-icon"><span>☀</span></div><h3>Солнце</h3><div class="product-desc">Яркая привилегия для тех, кто любит выделяться.</div></div><div class="product-bottom"><div class="price">160 <small>₽</small></div><button class="buy" data-name="Солнце">Купить ↗</button></div></article>
+      <article class="product"><div><div class="product-tag">04 / Elite</div><div class="product-icon"><span>★</span></div><h3>Лаффи</h3><div class="product-desc">Элитный ранг с дополнительными игровыми бонусами.</div></div><div class="product-bottom"><div class="price">200 <small>₽</small></div><button class="buy" data-name="Лаффи">Купить ↗</button></div></article>
+      <article class="product"><div><div class="product-tag">05 / Legendary</div><div class="product-icon"><span>H</span></div><h3>Кронос</h3><div class="product-desc">Мощный статус для опытных игроков проекта.</div></div><div class="product-bottom"><div class="price">250 <small>₽</small></div><button class="buy" data-name="Кронос">Купить ↗</button></div></article>
+      <article class="product"><div><div class="product-tag">06 / Ultimate</div><div class="product-icon"><span>≈</span></div><h3>Дельфин</h3><div class="product-desc">Максимум стиля, привилегий и внимания на сервере.</div></div><div class="product-bottom"><div class="price">344 <small>₽</small></div><button class="buy" data-name="Дельфин">Купить ↗</button></div></article>
+    </div></div></div></section>
+    <section id="about" class="manifesto"><div class="container manifesto-inner"><div><div class="label">Our world / 03</div><h2>Место для<br>своих</h2></div><div><p>Никаких скучных правил. Только честная игра, живое комьюнити и мир, который меняется вместе с тобой.</p><div class="stats"><div class="stat"><strong>24/7</strong><span>Сервер онлайн</span></div><div class="stat"><strong>1.2K</strong><span>Игроков сейчас</span></div><div class="stat"><strong>99.9%</strong><span>Аптайм проекта</span></div></div></div></div></section>
+    <section id="how" class="how"><div class="container"><div class="section-head"><div><div class="label">Easy start / 04</div><h2>Три шага<br>до игры</h2></div></div><div class="steps"><div class="step"><h3>Выбери</h3><p>Найди донат или товар для своего стиля игры.</p></div><div class="step"><h3>Оплати</h3><p>Безопасная оплата удобным способом.</p></div><div class="step"><h3>Играй</h3><p>Используй новые возможности сразу после покупки.</p></div></div></div></section>
+  </main>
+  <footer><div class="container footer"><span>© 2026 <strong>HOLYSPARK</strong>. Все права защищены.</span><span>play.holyspark.fun · Discord</span></div></footer>
+  <div id="toast" class="toast">Раздел доната скоро будет доступен</div>
+  <script>
+    const maxUrl = 'https://max.ru/79058020254';
+    document.querySelectorAll('.buy').forEach((button) => button.addEventListener('click', () => {
+      window.open(maxUrl, '_blank', 'noopener,noreferrer');
+    }));
+    document.querySelectorAll('.mode, .category').forEach((button) => button.addEventListener('click', () => { button.parentElement.querySelectorAll('button').forEach((item) => item.classList.remove('active')); button.classList.add('active'); }));
+  </script>
+</body>
+</html>
